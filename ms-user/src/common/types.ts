@@ -1,6 +1,8 @@
 import { HttpError } from "./HttpError";
-import { Request, Response, NextFunction } from "express";
+import { Application, Request, Response, NextFunction } from "express";
 import { ParamsDictionary as Params, Query, Send } from "express-serve-static-core";
+
+export interface IApp extends Application {}
 
 export interface IRequestBody<T> extends Request {
   body: T;
