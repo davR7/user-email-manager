@@ -1,16 +1,18 @@
-import "./infra/config/dotenv";
+import "../config/dotenv";
 import "express-async-errors";
-import express, { Application } from "express";
 import cors from "cors";
 import helmet from "helmet";
 import { Routes } from "./routes";
-import GlobalExceptionHandler from "./resources/exceptions/GlobalHandlerExceptions";
+import GlobalExceptionHandler from "../../resources/exceptions/GlobalHandlerExceptions";
+import { IApp, IExpressUtils } from "../../common/types";
 
 class App {
-  private app: Application = express();
   static amountInst = 0;
 
-  constructor() {
+  constructor(
+    private app: IApp,
+    private exUtils: IExpressUtils
+  ) {
     App.amountInst++;
     if (App.amountInst > 1) {
       throw new Error("Only one instance of the App class is allowed.");
@@ -22,8 +24,8 @@ class App {
   }
 
   private setupLoaders() {
-    this.app.use(express.json());
-    this.app.use(express.urlencoded({ extended: false }));
+    this.app.use(this.exUtils.json());
+    this.app.use(this.exUtils.urlencoded({ extended: false }));
     this.app.use(cors());
     this.app.use(helmet());
   }
