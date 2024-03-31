@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import { IPassHashing } from "./IPassHashing";
+import { IPassHashing } from "../../utils/IPassHashing";
 
 class Bcrypt implements IPassHashing {
   constructor() {}
@@ -13,4 +13,4 @@ class Bcrypt implements IPassHashing {
   }
 }
 
-export default new Bcrypt();
+export { Bcrypt };
