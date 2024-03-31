@@ -1,6 +1,7 @@
 import bcrypt from "bcrypt";
+import { IPassHashing } from "./IPassHashing";
 
-class PassHashing {
+class Bcrypt implements IPassHashing {
   constructor() {}
 
   async hash(password: string) {
@@ -12,4 +13,4 @@ class PassHashing {
   }
 }
 
-export default new PassHashing();
+export default new Bcrypt();
