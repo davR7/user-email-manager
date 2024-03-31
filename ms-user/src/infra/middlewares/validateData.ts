@@ -1,7 +1,7 @@
-import ValidateSchema from "../utils/ValidateSchema";
+import ValidateSchema from "../../utils/ValidateSchema";
 import { Schema, ValidationError } from "joi";
-import { IResponse, IResquest, INextFunction } from "../common/types";
-import { HttpAdapter } from "../utils/HttpAdapter";
+import { IResponse, IResquest, INextFunction } from "../../common/types";
+import { HttpAdapter } from "../../utils/HttpAdapter";
 
 export const validateData = (schema: Schema) => {
   return async (req: IResquest, res: IResponse, next: INextFunction) => {
