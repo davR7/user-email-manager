@@ -1,22 +1,23 @@
-import PassHashing from "../utils/PassHashing";
 import { User } from "../domain/User";
 import { IUserRepository } from "../repositories/IUserRepository";
 import { HttpError } from "../common/HttpError";
 import { UserResDTO } from "../dtos/UserResDTO";
 import { IUserResBodyDTO } from "../dtos/IUserResBodyDTO";
 import { IUserProducer } from "../producers/IUserProducer";
+import { IPassHashing } from "../utils/IPassHashing";
 
 export class UserService {
   constructor(
     private userRepo: IUserRepository,
-    private userProd: IUserProducer
+    private userProd: IUserProducer,
+    private passHashing: IPassHashing
   ) {}
 
   async createUser({ fullname, email, password }: User): Promise<IUserResBodyDTO> {
     if (await this.userRepo.findOneUser({ email })) {
       throw new HttpError("User already exists", 400);
     }
-    const hash = await PassHashing.hash(password);
+    const hash = await this.passHashing.hash(password);
     const user = await this.userRepo.insertUser(new User(fullname, email, hash));
     await this.userProd.publishMessageEmail(user);
     return new UserResDTO(user);
