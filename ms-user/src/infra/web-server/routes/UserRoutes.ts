@@ -1,9 +1,9 @@
-import { userFactory } from "../infra/factories/userFactory";
-import { IResquest, IResponse, INextFunction } from "../common/types";
-import { HttpAdapter } from "../utils/HttpAdapter";
+import { userFactory } from "../../factories/userFactory";
+import { IResquest, IResponse, INextFunction } from "../../../common/types";
+import { HttpAdapter } from "../../../utils/HttpAdapter";
 import { Router } from "express";
-import { validateData } from "../middlewares/validateData";
-import schemas from "../infra/schemas";
+import { validateData } from "../../../middlewares/validateData";
+import schemas from "../../schemas";
 
 class UserRoutes {
   router = Router();
