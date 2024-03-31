@@ -2,7 +2,7 @@ import { userFactory } from "../../factories/userFactory";
 import { IResquest, IResponse, INextFunction } from "../../../common/types";
 import { HttpAdapter } from "../../../utils/HttpAdapter";
 import { Router } from "express";
-import { validateData } from "../../../middlewares/validateData";
+import { validateData } from "../../middlewares/validateData";
 import schemas from "../../schemas";
 
 class UserRoutes {
