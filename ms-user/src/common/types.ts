@@ -1,8 +1,11 @@
 import { HttpError } from "./HttpError";
 import { Application, Request, Response, NextFunction } from "express";
 import { ParamsDictionary as Params, Query, Send } from "express-serve-static-core";
+import { BodyParser } from "body-parser";
 
 export interface IApp extends Application {}
+
+export interface IExpressUtils extends BodyParser {}
 
 export interface IRequestBody<T> extends Request {
   body: T;
