@@ -7,7 +7,6 @@ import java.time.Instant;
 
 @Data
 public class EmailResDTO {
-    private String userId;
     private String ownerRef;
     private String emailTo;
     private String subject;
