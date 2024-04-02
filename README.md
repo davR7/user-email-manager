@@ -1,3 +1,7 @@
+<div align="center">
+  <a><img src="logo.png" width="400" alt="SpringBoot" /></a>
+</div>
+
 # UserEmailManager
 
 O projeto consiste em uma arquitetura de microserviços que utiliza o RabbitMQ, um message broker amplamente consolidado no mercado, para facilitar a comunicação entre os sistemas. A aplicação é composta por dois serviços independentes:
